@@ -2,7 +2,7 @@
 
 ⚡ **Enterprise-Grade Payment Infrastructure for the Stellar Ecosystem**
 
-Stellar Nexus is a sophisticated payment protocol that redefines blockchain transactions through advanced user experience, enterprise-grade architecture, and production-ready infrastructure. This next-generation dApp demonstrates mastery of Stellar development while delivering a premium payment interface that exceeds industry standards.
+Stellar Nexus is a sophisticated payment protocol that redefines blockchain transactions through advanced user experience, enterprise-grade architecture, and production-ready infrastructure. This next-generation dApp showcases modern web development capabilities while delivering a premium payment interface that exceeds industry standards.
 
 ## 🚀 Overview
 
@@ -14,7 +14,7 @@ To democratize blockchain payments through enterprise-grade infrastructure that 
 
 ## ✨ Key Features
 
-### Core White Belt Features ✅
+### Core Features ✅
 - **Wallet Integration**: Multi-wallet support with Freighter API
 - **Network Configuration**: Stellar Testnet with automatic network detection
 - **Connection Management**: Advanced connection state management
@@ -59,7 +59,7 @@ To democratize blockchain payments through enterprise-grade infrastructure that 
 - **Real-time Updates**: Balance and connection status updates
 - **Type Safety**: Comprehensive TypeScript interfaces
 
-## 📋 Requirements Compliance
+## 📋 Technical Specifications
 
 ### ✅ Wallet Setup
 - Freighter wallet integration with automatic detection

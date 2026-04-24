@@ -1,0 +1,46 @@
+{
+  "name": "stellar-nexus",
+  "version": "1.0.0",
+  "description": "⚡ Stellar Nexus - Next-Generation Payment Protocol on Stellar Network",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export"
+  },
+  "keywords": [
+    "stellar",
+    "blockchain",
+    "payment",
+    "dapp",
+    "typescript",
+    "react",
+    "nextjs"
+  ],
+  "author": "omolobamoyinoluwa-max",
+  "license": "MIT",
+  "dependencies": {
+    "next": "14.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "@stellar/freighter-api": "^1.4.0",
+    "stellar-sdk": "^11.0.0",
+    "typescript": "^5.2.2",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/node": "^20.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-config-next": "14.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omolobamoyinoluwa-max/Stellar-Nexus.git"
+  },
+  "homepage": "https://github.com/omolobamoyinoluwa-max/Stellar-Nexus"
+}

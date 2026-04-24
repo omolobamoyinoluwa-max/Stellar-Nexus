@@ -410,4 +410,4 @@ This project exceeds White Belt requirements by:
 
 ---
 
-**Built with ❤️ and excellence for the Stellar Frontend Challenge**
+**Built with ❤️ and excellence for the Stellar Journey to Mastery Monthly Builder Challenge**

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Nexus - Next-Gen Payment Protocol</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">Stellar Nexus</span>
+                </div>
+                <div class="network-badge">
+                    <span class="network-dot"></span>
+                    Testnet
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Wallet Status Card -->
+            <section class="wallet-card" id="wallet-card">
+                <div class="wallet-header">
+                    <div class="wallet-icon" id="wallet-icon">
+                        <div class="wallet-avatar">🔒</div>
+                    </div>
+                    <div class="wallet-info">
+                        <h2 id="wallet-status">Wallet Not Connected</h2>
+                        <p id="wallet-subtitle">Connect your Freighter wallet to start</p>
+                    </div>
+                </div>
+                
+                <div class="wallet-details hidden" id="wallet-details">
+                    <div class="address-section">
+                        <label>Your Address</label>
+                        <div class="address-display">
+                            <span id="address-text"></span>
+                            <button class="copy-btn" id="copy-address" title="Copy address">
+                                <span class="copy-icon">📋</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="balance-section">
+                        <div class="balance-header">
+                            <label>XLM Balance</label>
+                            <button class="refresh-btn" id="refresh-balance" title="Refresh balance">
+                                <span class="refresh-icon">🔄</span>
+                            </button>
+                        </div>
+                        <div class="balance-amount">
+                            <span class="balance-value" id="balance-value">0.0000000</span>
+                            <span class="balance-currency">XLM</span>
+                        </div>
+                        <div class="balance-usd" id="balance-usd">≈ $0.00 USD</div>
+                    </div>
+                </div>
+                
+                <div class="wallet-actions">
+                    <button class="btn btn-primary" id="connect-btn">
+                        <span class="btn-icon">🔗</span>
+                        Connect Wallet
+                    </button>
+                    <button class="btn btn-secondary hidden" id="disconnect-btn">
+                        <span class="btn-icon">🔓</span>
+                        Disconnect
+                    </button>
+                </div>
+            </section>
+
+            <!-- Payment Section -->
+            <section class="payment-card hidden" id="payment-card">
+                <div class="card-header">
+                    <h3>Send XLM</h3>
+                    <div class="quick-amounts">
+                        <button class="quick-amount" data-amount="1">1 XLM</button>
+                        <button class="quick-amount" data-amount="5">5 XLM</button>
+                        <button class="quick-amount" data-amount="10">10 XLM</button>
+                    </div>
+                </div>
+                
+                <form class="payment-form" id="payment-form">
+                    <div class="form-group">
+                        <label for="recipient">Recipient Address</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="text" 
+                                id="recipient" 
+                                placeholder="G..." 
+                                required
+                                pattern="^G[A-Z0-9]{55}$"
+                                title="Stellar addresses start with 'G' and are 56 characters long"
+                            >
+                            <button type="button" class="paste-btn" id="paste-address" title="Paste address">
+                                <span>📋</span>
+                            </button>
+                        </div>
+                        <div class="input-hint">Enter a Stellar address (starts with G)</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="amount">Amount (XLM)</label>
+                        <div class="amount-wrapper">
+                            <input 
+                                type="number" 
+                                id="amount" 
+                                placeholder="0.00" 
+                                step="0.0000001" 
+                                min="0.0000001" 
+                                required
+                            >
+                            <div class="amount-info">
+                                <span class="max-balance" id="max-balance">Max: 0 XLM</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="memo">Memo (Optional)</label>
+                        <input 
+                            type="text" 
+                            id="memo" 
+                            placeholder="Add a note..."
+                            maxlength="28"
+                        >
+                        <div class="input-hint">Optional message for the recipient</div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large" id="send-btn">
+                        <span class="btn-icon">💸</span>
+                        Send XLM
+                    </button>
+                </form>
+            </section>
+
+            <!-- Transaction Status -->
+            <section class="status-card hidden" id="status-card">
+                <div class="status-content">
+                    <div class="status-icon" id="status-icon"></div>
+                    <div class="status-message">
+                        <h3 id="status-title"></h3>
+                        <p id="status-description"></p>
+                    </div>
+                </div>
+                
+                <div class="transaction-details hidden" id="transaction-details">
+                    <div class="detail-row">
+                        <label>Transaction Hash:</label>
+                        <div class="hash-wrapper">
+                            <code id="tx-hash"></code>
+                            <button class="copy-btn" id="copy-hash" title="Copy hash">
+                                <span>📋</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <label>Explorer:</label>
+                        <a href="#" id="explorer-link" target="_blank" class="explorer-link">
+                            View on Stellar Expert →
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="status-actions">
+                    <button class="btn btn-secondary" id="new-transaction">New Transaction</button>
+                    <button class="btn btn-primary hidden" id="view-history">View History</button>
+                </div>
+            </section>
+
+            <!-- Transaction History -->
+            <section class="history-card hidden" id="history-card">
+                <div class="card-header">
+                    <h3>Recent Transactions</h3>
+                    <button class="btn btn-secondary" id="close-history">Close</button>
+                </div>
+                <div class="history-list" id="history-list">
+                    <div class="history-empty">No transactions yet</div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Enterprise-Grade Payment Infrastructure for Stellar Ecosystem</p>
+            <div class="footer-links">
+                <a href="https://stellar.org" target="_blank">Stellar.org</a>
+                <a href="https://freighter.app" target="_blank">Freighter Wallet</a>
+                <a href="https://github.com/yourusername/stellar-nexus" target="_blank">GitHub</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay hidden" id="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p id="loading-text">Processing...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@stellar/freighter-api@latest/lib/index.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
